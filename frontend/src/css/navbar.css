@@ -1,6 +1,6 @@
 .navbar {
     height: 4rem;
-    width: 100vw; 
+    width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,7 +20,7 @@
     margin-left: 4rem;
 }
 
-.logo:hover{
+.logo:hover {
     scale: 1.05;
 }
 
@@ -43,7 +43,7 @@
     transition: 0.5s all;
 }
 
-.navigation-menu>li:hover{
+.navigation-menu>li:hover {
     scale: 1.1;
 }
 
@@ -111,7 +111,7 @@
     cursor: pointer;
 }
 
-.navigation-menu li .subnav .nav-card a svg{
+.navigation-menu li .subnav .nav-card a svg {
     margin-left: 1rem;
     height: 2rem;
     weight: 2rem;
@@ -154,7 +154,7 @@
     border-radius: 4px;
     transition: 0.5s all;
 }
-  
+
 .nav-icons .nav-button:hover {
     background-color: #ff5162;
     scale: 1.05;

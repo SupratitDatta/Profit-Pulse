@@ -1,0 +1,65 @@
+.hero {
+    height: 100vh;
+    background: #F4CFC6 url('../assets/homePic.png') no-repeat center right;
+    background-size: 30%;
+    background-position: 90% 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    grid-gap: 3rem;
+    padding: 0rem 4rem;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 1.2;
+    width: 60%;
+    color: #45413E
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: row;
+    grid-gap: 16px;
+    margin-left: 2vw;
+}
+
+.btn-group button {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 2rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5rem;
+    display: flex;
+    flex-direction: row;
+    grid-gap: 8px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-group button .material-symbols-outlined {
+    font-size: 1.2rem;
+}
+
+.btn-group button.btn-filled-dark {
+    color: #F9F9F9;
+    background: #45413E;
+    border: 2px solid #45413E;
+}
+
+.btn-group button.btn-outline-dark {
+    color: #45413E;
+    background: none;
+    border: 2px solid #45413E;
+}
+
+.btn-group button.btn-hover-color:hover {
+    color: #F9F9F9;
+    border: 2px solid #F4CFC6;
+    background: #ff5162;
+    box-shadow: all 0.2s ease;
+}
