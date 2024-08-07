@@ -12,6 +12,10 @@
     z-index: 100;
 }
 
+.navbar a {
+    text-decoration: none;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -29,6 +33,10 @@
     width: 2.5rem;
     margin-right: 10px;
     border-radius: 0.5rem;
+}
+
+.logo .title {
+    color: #333;
 }
 
 .navigation-menu {
@@ -82,7 +90,7 @@
 }
 
 .navigation-menu li .subnav .nav-card:hover {
-    background-color: #f0f0f0;
+    background-color: #ffb4bb;
 }
 
 .navigation-menu li .subnav .nav-card:hover a svg {
@@ -122,6 +130,7 @@
 
 .navigation-menu li .subnav .nav-card a svg:hover {
     transform: translateX(4px);
+    color: #ff717f;
 }
 
 .navigation-menu li .subnav .nav-card a span:first-child {
