@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
+import '../css/roicalculator.css';
 
 function ROICalculator() {
     const [productPrice, setProductPrice] = useState('');
@@ -30,16 +31,17 @@ function ROICalculator() {
                 income: revenue,
                 roi
             });
-        }
-        catch (error) {
+        } catch (error) {
             console.error('Error calculating ROI:', error);
             setResult('Error calculating ROI');
         }
     };
 
     return (
+        <><Navbar />
+        
         <div className="roi-calculator">
-            <Navbar />
+
             <h2>ROI Calculator</h2>
             <form onSubmit={calculateROI}>
                 <input
@@ -47,26 +49,26 @@ function ROICalculator() {
                     placeholder="Total Product Price"
                     value={productPrice}
                     onChange={(e) => setProductPrice(e.target.value)}
-                    required
-                />
+                    required />
+
                 <input
                     type="number"
                     placeholder="Marketing Cost"
                     value={marketingCost}
                     onChange={(e) => setMarketingCost(e.target.value)}
-                    required
-                />
+                    required />
+
                 <input
                     type="number"
                     placeholder="Income"
                     value={income}
                     onChange={(e) => setIncome(e.target.value)}
-                    required
-                />
-                <button type="submit">Calculate ROI</button>
-            </form>
+                    required />
+                    <div className="lol">
+                <button class="button-86" type="submit">Calculate ROI</button>
+         </div>   </form>
             {result && <p className="result">{result}</p>}
-        </div>
+        </div></>
     );
 }
 
