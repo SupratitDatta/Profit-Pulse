@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ROICalculator from './pages/ROICalculator';
 import StockAnalysis from './pages/StockAnalysis';
-import BusinessStrategies from './pages/BusinessStrategies';
+import Business from './pages/Business';
 
 function App() {
     return (
@@ -12,7 +12,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/roi-calculator" element={<ROICalculator />} />
                 <Route path="/stock-analysis" element={<StockAnalysis />} />
-                <Route path="/business-strategies" element={<BusinessStrategies />} />
+                <Route path="/business-strategies" element={<Business />} />
             </Routes>
         </Router>
     );

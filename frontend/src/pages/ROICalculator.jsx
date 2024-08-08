@@ -31,44 +31,45 @@ function ROICalculator() {
                 income: revenue,
                 roi
             });
-        } catch (error) {
+        } 
+        catch (error) {
             console.error('Error calculating ROI:', error);
             setResult('Error calculating ROI');
         }
     };
 
     return (
-        <><Navbar />
-        
-        <div className="roi-calculator">
+        <div className="roi-container">
+            <Navbar />
+            <div className="roi-calculator">
+                <h2>ROI Calculator</h2>
+                <form onSubmit={calculateROI}>
+                    <input
+                        type="number"
+                        placeholder="Total Product Price"
+                        value={productPrice}
+                        onChange={(e) => setProductPrice(e.target.value)}
+                        required />
 
-            <h2>ROI Calculator</h2>
-            <form onSubmit={calculateROI}>
-                <input
-                    type="number"
-                    placeholder="Total Product Price"
-                    value={productPrice}
-                    onChange={(e) => setProductPrice(e.target.value)}
-                    required />
+                    <input
+                        type="number"
+                        placeholder="Marketing Cost"
+                        value={marketingCost}
+                        onChange={(e) => setMarketingCost(e.target.value)}
+                        required />
 
-                <input
-                    type="number"
-                    placeholder="Marketing Cost"
-                    value={marketingCost}
-                    onChange={(e) => setMarketingCost(e.target.value)}
-                    required />
-
-                <input
-                    type="number"
-                    placeholder="Income"
-                    value={income}
-                    onChange={(e) => setIncome(e.target.value)}
-                    required />
+                    <input
+                        type="number"
+                        placeholder="Income"
+                        value={income}
+                        onChange={(e) => setIncome(e.target.value)}
+                        required />
                     <div className="lol">
-                <button class="button-86" type="submit">Calculate ROI</button>
-         </div>   </form>
-            {result && <p className="result">{result}</p>}
-        </div></>
+                        <button class="button-86" type="submit">Calculate ROI</button>
+                    </div>   </form>
+                {result && <p className="result">{result}</p>}
+            </div>
+        </div>
     );
 }
 
