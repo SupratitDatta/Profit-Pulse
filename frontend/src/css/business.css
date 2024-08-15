@@ -1,0 +1,10 @@
+.business-container{
+    background: #F4CFC6;
+    overflow: hidden;
+    height: 90vh;
+    padding-top: 10vh;
+}
+
+.business{
+    margin: 0rem 4rem;
+}
