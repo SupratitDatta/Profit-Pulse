@@ -1,0 +1,118 @@
+body {
+    background: #F4CFC6;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.login-container, .signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    margin: 6rem auto;
+    padding: 40px;
+    background: linear-gradient(135deg, #fff8f8 0%, #ffe6e8 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 113, 127, 0.2);
+    max-width: 400px;
+    width: 100%;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.login-container h2, .signup-container h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: fadeIn 1s ease-out 0.2s both;
+}
+
+.login-container form, .signup-container form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ffccd1;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8);
+    animation: fadeIn 0.5s ease-out both;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #ff717f;
+    box-shadow: 0 0 10px rgba(255, 113, 127, 0.3);
+    transform: translateY(-2px);
+}
+
+.submit-btn {
+    padding: 15px 25px;
+    background: linear-gradient(45deg, #ff717f, #ff5162);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(255, 113, 127, 0.3);
+    animation: fadeIn 0.5s ease-out 0.8s both;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(45deg, #ff5162, #ff717f);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 113, 127, 0.4);
+    animation: pulse 0.8s infinite;
+}
+
+@media (max-width: 600px) {
+    .login-container, .signup-container {
+        padding: 30px;
+        margin: 3rem auto;
+    }
+    
+    .login-container h2, .signup-container h2 {
+        font-size: 24px;
+    }
+    
+    .form-group input,
+    .submit-btn {
+        font-size: 16px;
+    }
+}
