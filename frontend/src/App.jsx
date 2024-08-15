@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import ROICalculator from './pages/ROICalculator';
 import StockAnalysis from './pages/StockAnalysis';
 import Business from './pages/Business';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
     return (
@@ -13,6 +15,8 @@ function App() {
                 <Route path="/roi-calculator" element={<ROICalculator />} />
                 <Route path="/stock-analysis" element={<StockAnalysis />} />
                 <Route path="/business-strategies" element={<Business />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
             </Routes>
         </Router>
     );
