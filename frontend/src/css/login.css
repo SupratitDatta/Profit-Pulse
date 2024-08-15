@@ -1,7 +1,5 @@
 body {
     background: #F4CFC6;
-    margin: 0;
-    padding: 0;
 }
 
 @keyframes fadeIn {
@@ -19,15 +17,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Roboto', sans-serif;
-    margin: 6rem auto;
+    margin: 7vh auto;
     padding: 40px;
     background: linear-gradient(135deg, #fff8f8 0%, #ffe6e8 100%);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(255, 113, 127, 0.2);
     max-width: 400px;
     width: 100%;
-    animation: fadeIn 0.8s ease-out;
+    animation: fadeIn 0.3s ease-out;
 }
 
 .login-container h2, .signup-container h2 {
@@ -91,14 +88,55 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     box-shadow: 0 4px 15px rgba(255, 113, 127, 0.3);
-    animation: fadeIn 0.5s ease-out 0.8s both;
+    animation: fadeIn 0.5s ease-out 0.1s both;
 }
 
 .submit-btn:hover {
     background: linear-gradient(45deg, #ff5162, #ff717f);
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(255, 113, 127, 0.4);
-    animation: pulse 0.8s infinite;
+    animation: pulse 2s infinite;
+}
+
+.register-link, .login-link {
+    text-align: center;
+}
+
+.register-now,.login-now  {
+    color: #ff717f;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.register-now:hover, .login-now:hover {
+    color: #ff5162;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 2rem;
+    left: 3rem;
+    background: #ff717f;
+    border-radius: 5px;
+    border: none;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #333;
+    transition: transform 0.2s ease-in-out; 
+}
+
+.back-btn:hover {
+    transform: scale(1.02);
+}
+
+.back-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-weight: 800;
 }
 
 @media (max-width: 600px) {

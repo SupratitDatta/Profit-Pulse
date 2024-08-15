@@ -1,9 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
+import { firebaseAuth } from "../utils/firebaseConfig";
+import { signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import "../css/navbar.css";
 
 function Navbar() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [username, setUsername] = useState("");
+
+    const extractUsername = (email) => {
+        if (email) {
+            return email.substring(0, email.indexOf('@')).toUpperCase();
+        }
+        return "";
+    };
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
+            if (user) {
+                setIsLoggedIn(true);
+                setUsername("Hello, " + extractUsername(user.email));
+            }
+            else {
+                setIsLoggedIn(false);
+                setUsername("");
+            }
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    const handleLogout = async () => {
+        await signOut(firebaseAuth);
+        setIsLoggedIn(false);
+    };
     return (
         <div className="navbar-container">
             <nav className="navbar">
@@ -129,7 +161,7 @@ function Navbar() {
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                                 </svg>
-                                
+
                                 <a href="#">
                                     <span>Product 4</span>
                                     <span></span>
@@ -146,12 +178,26 @@ function Navbar() {
                     <svg width="40" height="32" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m15.75 15.75-2.489-2.489m0 0a3.375 3.375 0 1 0-4.773-4.773 3.375 3.375 0 0 0 4.774 4.774ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
-                    <Link to="/login">
-                    <button className="nav-button nav-login">Login</button>
-                    </Link>
-                    <Link to="/signup">
-                    <button className="nav-button nav-signup">Sign Up</button>
-                    </Link>
+                    {isLoggedIn ? (
+                        <>
+                            <span style={{ fontWeight: 600 }}>{username}</span>
+                            <Link to="/profile">
+                                <button className="nav-button nav-profile">Profile</button>
+                            </Link>
+                            <button className="nav-button nav-logout" onClick={handleLogout}>
+                                Logout
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <Link to="/login">
+                                <button className="nav-button nav-login">Login</button>
+                            </Link>
+                            <Link to="/signup">
+                                <button className="nav-button nav-signup">Sign Up</button>
+                            </Link>
+                        </>
+                    )}
                 </div>
             </nav>
         </div>
