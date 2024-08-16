@@ -8,7 +8,6 @@ from sklearn.preprocessing import StandardScaler
 app = Flask(__name__)
 CORS(app)
 
-
 # Load and preprocess data
 df = pd.read_csv("project.csv", encoding="latin1")
 df['actual_price'] = pd.to_numeric(df['actual_price'].str.replace(',', ''), errors='coerce').fillna(0).astype(int)
@@ -38,31 +37,7 @@ X_scaled = scaler.fit_transform(X)
 model = LinearRegression()
 model.fit(X_scaled, y)
 
-# @app.route('/')
-# def index():
-#     return render_template('index.html')
-
-# @app.route('/api/predict', methods=['POST'])
-# def predict():
-#     data = request.json
-#     initial_price = float(data['initialPrice'])
-#     raw_sell_price = float(data['rawSellPrice'])
-#     discounted_price = float(data['discountedPrice'])
-#     profit = float(data['profit'])
-#     investment = float(data['investment'])
-    
-#     # Prepare input for the model
-#     input_data = np.array([[initial_price, raw_sell_price, discounted_price, profit, investment]])
-#     input_scaled = scaler.transform(input_data)
-    
-#     # Predict ROI
-#     prediction = model.predict(input_scaled)[0]
-    
-#     return jsonify({'roi': prediction})
-
-
-
-@app.route('/api/predict', methods=['POST'])
+@app.route('/api/roi/predict', methods=['POST'])
 def predict():
     data = request.json
     initial_price = float(data['initialPrice'])
@@ -80,9 +55,5 @@ def predict():
     
     return jsonify({'roi': prediction})
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
-
-
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5005)

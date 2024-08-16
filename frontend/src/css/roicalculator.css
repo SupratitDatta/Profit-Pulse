@@ -166,6 +166,7 @@
 .roi-calculator .result {
     margin-top: 30px;
     font-size: 20px;
+    font-weight: 600;
     color: #333;
     text-align: center;
     padding: 20px;

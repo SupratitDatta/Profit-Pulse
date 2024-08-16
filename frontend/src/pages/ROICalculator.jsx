@@ -28,7 +28,7 @@ function ROICalculator() {
         }
 
         try {
-            const response = await axios.post('http://localhost:5000/api/predict', data);
+            const response = await axios.post('http://localhost:5005/api/roi/predict', data);
             setResult(`Predicted ROI: ${response.data.roi.toFixed(2)}%`);
         }
         catch (error) {
