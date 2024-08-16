@@ -17,6 +17,15 @@ function Navbar() {
         return "";
     };
 
+    const smoothScroll = (event) => {
+        event.preventDefault();
+        const targetId = event.currentTarget.getAttribute("href").substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(firebaseAuth, (user) => {
             if (user) {
@@ -47,8 +56,8 @@ function Navbar() {
                     </div>
                 </Link>
                 <ul className="navigation-menu">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#hero" onClick={smoothScroll}>Home</a></li>
+                    <li><a href="#about" onClick={smoothScroll}>About</a></li>
                     <li>
                         <a href="#">Services</a>
                         <ul className="subnav">

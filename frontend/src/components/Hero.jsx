@@ -5,7 +5,7 @@ import "../css/hero.css";
 function Hero() {
     return (
         <div>
-            <section className="hero">
+            <section className="hero" id="hero">
                 <h1>Your One-Stop Solution for Retail Stock Growth!</h1>
                 <div className="btn-group">
                     <Link to="/roi-calculator">
