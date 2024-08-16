@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ROICalculator from './pages/ROICalculator';
+import ROPCalculator from './pages/ROPCalculator';
 import StockAnalysis from './pages/StockAnalysis';
 import Business from './pages/Business';
 import Login from './pages/Login';
@@ -15,6 +16,7 @@ function App() {
                 <Route path="/roi-calculator" element={<ROICalculator />} />
                 <Route path="/stock-analysis" element={<StockAnalysis />} />
                 <Route path="/business-strategies" element={<Business />} />
+                <Route path="/reorder-point" element={<ROPCalculator />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
             </Routes>

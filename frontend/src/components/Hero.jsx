@@ -18,9 +18,9 @@ function Hero() {
                             Analysis
                         </span></button>
                     </Link>
-                    <Link to="/business-strategies">
-                        <button className="btn-outline-dark btn-hover-color">Business<span className="material-symbols-outlined">
-                            Strategies
+                    <Link to="/reorder-point">
+                        <button className="btn-outline-dark btn-hover-color">Re-Order<span className="material-symbols-outlined">
+                            Point
                         </span></button>
                     </Link>
                 </div>
