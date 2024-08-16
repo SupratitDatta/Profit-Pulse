@@ -26,9 +26,8 @@
 
 .roi-container {
     background: #F4CFC6;
-    overflow: hidden;
-    height: 85vh;
-    padding-top: 15vh;
+    height: 100vh;
+    padding: 15vh 0;
 }
 
 .roi-calculator {

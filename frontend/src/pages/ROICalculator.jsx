@@ -4,37 +4,36 @@ import Navbar from '../components/Navbar';
 import '../css/roicalculator.css';
 
 function ROICalculator() {
-    const [productPrice, setProductPrice] = useState('');
-    const [marketingCost, setMarketingCost] = useState('');
-    const [income, setIncome] = useState('');
+    const [initialPrice, setInitialPrice] = useState('');
+    const [rawSellPrice, setRawSellPrice] = useState('');
+    const [discountedPrice, setDiscountedPrice] = useState('');
+    const [profit, setProfit] = useState('');
+    const [investment, setInvestment] = useState('');
     const [result, setResult] = useState('');
 
     const calculateROI = async (e) => {
         e.preventDefault();
 
-        const price = parseFloat(productPrice);
-        const cost = parseFloat(marketingCost);
-        const revenue = parseFloat(income);
+        const data = {
+            initialPrice: parseFloat(initialPrice),
+            rawSellPrice: parseFloat(rawSellPrice),
+            discountedPrice: parseFloat(discountedPrice),
+            profit: parseFloat(profit),
+            investment: parseFloat(investment)
+        };
 
-        if (isNaN(price) || isNaN(cost) || isNaN(revenue)) {
+        if (Object.values(data).some(isNaN)) {
             setResult('Please enter valid numbers');
             return;
         }
 
         try {
-            const roi = ((revenue - (price + cost)) / (price + cost)) * 100;
-            setResult(`Your ROI is ${roi.toFixed(2)}%`);
-
-            await axios.post('/api/calculate-roi', {
-                productPrice: price,
-                marketingCost: cost,
-                income: revenue,
-                roi
-            });
-        } 
+            const response = await axios.post('http://localhost:5000/api/predict', data);
+            setResult(`Predicted ROI: ${response.data.roi.toFixed(2)}%`);
+        }
         catch (error) {
-            console.error('Error calculating ROI:', error);
-            setResult('Error calculating ROI');
+            console.error('Error predicting ROI:', error);
+            setResult('Error predicting ROI');
         }
     };
 
@@ -46,27 +45,43 @@ function ROICalculator() {
                 <form onSubmit={calculateROI}>
                     <input
                         type="number"
-                        placeholder="Total Product Price"
-                        value={productPrice}
-                        onChange={(e) => setProductPrice(e.target.value)}
+                        placeholder="Initial Price"
+                        value={initialPrice}
+                        onChange={(e) => setInitialPrice(e.target.value)}
                         required />
 
                     <input
                         type="number"
-                        placeholder="Marketing Cost"
-                        value={marketingCost}
-                        onChange={(e) => setMarketingCost(e.target.value)}
+                        placeholder="Raw Sell Price"
+                        value={rawSellPrice}
+                        onChange={(e) => setRawSellPrice(e.target.value)}
                         required />
 
                     <input
                         type="number"
-                        placeholder="Income"
-                        value={income}
-                        onChange={(e) => setIncome(e.target.value)}
+                        placeholder="Discounted Price"
+                        value={discountedPrice}
+                        onChange={(e) => setDiscountedPrice(e.target.value)}
                         required />
+
+                    <input
+                        type="number"
+                        placeholder="Profit"
+                        value={profit}
+                        onChange={(e) => setProfit(e.target.value)}
+                        required />
+
+                    <input
+                        type="number"
+                        placeholder="Investment"
+                        value={investment}
+                        onChange={(e) => setInvestment(e.target.value)}
+                        required />
+
                     <div className="lol">
-                        <button class="button-86" type="submit">Calculate ROI</button>
-                    </div>   </form>
+                        <button className="button-86" type="submit">Predict</button>
+                    </div>
+                </form>
                 {result && <p className="result">{result}</p>}
             </div>
         </div>
